@@ -1,24 +1,36 @@
 # slack-dm-export
-## USAGE
+
+Exports slack direct messages, private groups, and general channels to json.
+
+## Usage
+
 Insert API key to yours and change dates you want to get message history within.
-You can get API key at [Slack website](https://api.slack.com/web).
-## Syntaxis
-usage: python3 im.py [-h] [-g] [-s START_DATE] [-e END_DATE]
 
-Slack direct messages, private groups and general channel export
+You can get API key on the [Slack website](https://api.slack.com/web).
+
+Install the slacker library: `pip install slacker`.
+
+## Syntax
+
+`python3 im.py [-h] [-t SLACK_TOKEN] [-d] [-g] [-c] [-s START_DATE] [-e END_DATE] [-o DESTINATION]`
+
 ```
+required arguments:
+  -t, --token           Your slack web api token
+
 optional arguments:
-  -h, --help            show this help message and exit
-  -g, --groups          Export private groups (by default only #general and 
-                                                direct messages exported)
+  -h, --help            Show this help message and exit
+  -d, --direct          Export direct messages
+  -g, --groups          Export private groups
+  -c, --channels        Export channels (default: only #general)
   -s START_DATE, --start START_DATE
-                        Start date
+                        Start date (format: YYYY.MM.DD)
   -e END_DATE, --end END_DATE
-                        End date
+                        End date (format: YYYY.MM.DD)
+  -o OUTPUT, --output OUTPUT
+                        Output folder for the json files (default: ./export)
 ```
-### Date format
-Date format is YYYY.MM.DD
+
 ## Example
-python3 im.py -g --start 2015.04.26 --end 2015.05.13
 
-
+`python im.py -t xxxx -d -g --start 2015.04.26 --end 2015.05.13`
